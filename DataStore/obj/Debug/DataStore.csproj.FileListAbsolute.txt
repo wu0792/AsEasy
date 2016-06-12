@@ -1,0 +1,11 @@
+C:\Src\AsEasy\DataStore\bin\Debug\DataStore.dll.config
+C:\Src\AsEasy\DataStore\bin\Debug\DataStore.dll
+C:\Src\AsEasy\DataStore\bin\Debug\DataStore.pdb
+C:\Src\AsEasy\DataStore\bin\Debug\EntityFramework.dll
+C:\Src\AsEasy\DataStore\bin\Debug\UtilTool.dll
+C:\Src\AsEasy\DataStore\bin\Debug\UtilTool.pdb
+C:\Src\AsEasy\DataStore\bin\Debug\EntityFramework.xml
+C:\Src\AsEasy\DataStore\bin\Debug\zh-Hans\EntityFramework.resources.dll
+C:\Src\AsEasy\DataStore\obj\Debug\DataStore.csprojResolveAssemblyReference.cache
+C:\Src\AsEasy\DataStore\obj\Debug\DataStore.dll
+C:\Src\AsEasy\DataStore\obj\Debug\DataStore.pdb

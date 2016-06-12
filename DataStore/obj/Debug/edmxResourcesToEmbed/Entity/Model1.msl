@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AsEasyModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="LoginUser">
+      <EntityTypeMapping TypeName="AsEasyModel.LoginUser">
+        <MappingFragment StoreEntitySet="LoginUser">
+          <ScalarProperty Name="DataChanged_By" ColumnName="DataChanged_By" />
+          <ScalarProperty Name="DataChanged_Date" ColumnName="DataChanged_Date" />
+          <ScalarProperty Name="DataCreated_By" ColumnName="DataCreated_By" />
+          <ScalarProperty Name="DataCreated_Date" ColumnName="DataCreated_Date" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="DispalyName" ColumnName="DispalyName" />
+          <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OperLog">
+      <EntityTypeMapping TypeName="AsEasyModel.OperLog">
+        <MappingFragment StoreEntitySet="OperLog">
+          <ScalarProperty Name="DataChanged_By" ColumnName="DataChanged_By" />
+          <ScalarProperty Name="DataChanged_Date" ColumnName="DataChanged_Date" />
+          <ScalarProperty Name="DataCreated_By" ColumnName="DataCreated_By" />
+          <ScalarProperty Name="DataCreated_Date" ColumnName="DataCreated_Date" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="EntityID" ColumnName="EntityID" />
+          <ScalarProperty Name="OperType" ColumnName="OperType" />
+          <ScalarProperty Name="DataType" ColumnName="DataType" />
+          <ScalarProperty Name="LogID" ColumnName="LogID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Role">
+      <EntityTypeMapping TypeName="AsEasyModel.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="DataChanged_By" ColumnName="DataChanged_By" />
+          <ScalarProperty Name="DataChanged_Date" ColumnName="DataChanged_Date" />
+          <ScalarProperty Name="DataCreated_By" ColumnName="DataCreated_By" />
+          <ScalarProperty Name="DataCreated_Date" ColumnName="DataCreated_Date" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Question">
+      <EntityTypeMapping TypeName="AsEasyModel.Question">
+        <MappingFragment StoreEntitySet="Question">
+          <ScalarProperty Name="DataChanged_By" ColumnName="DataChanged_By" />
+          <ScalarProperty Name="DataChanged_Date" ColumnName="DataChanged_Date" />
+          <ScalarProperty Name="DataCreated_By" ColumnName="DataCreated_By" />
+          <ScalarProperty Name="DataCreated_Date" ColumnName="DataCreated_Date" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

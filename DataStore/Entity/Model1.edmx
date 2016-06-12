@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="AsEasyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="LoginUser">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LoginName" Type="varchar" MaxLength="20" />
+          <Property Name="DispalyName" Type="varchar" MaxLength="50" />
+          <Property Name="Status" Type="tinyint" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="DataCreated_Date" Type="datetime" />
+          <Property Name="DataCreated_By" Type="bigint" />
+          <Property Name="DataChanged_Date" Type="datetime" />
+          <Property Name="DataChanged_By" Type="bigint" />
+        </EntityType>
+        <EntityType Name="OperLog">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DataType" Type="int" />
+          <Property Name="OperType" Type="tinyint" />
+          <Property Name="EntityID" Type="varchar" MaxLength="50" />
+          <Property Name="Content" Type="binary" MaxLength="8000" />
+          <Property Name="DataCreated_Date" Type="datetime" />
+          <Property Name="DataCreated_By" Type="bigint" />
+          <Property Name="DataChanged_Date" Type="datetime" />
+          <Property Name="DataChanged_By" Type="bigint" />
+        </EntityType>
+        <EntityType Name="Question">
+          <Key>
+            <PropertyRef Name="QuestionID" />
+          </Key>
+          <Property Name="QuestionID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="100" />
+          <Property Name="Remark" Type="varchar" MaxLength="4000" />
+          <Property Name="Status" Type="tinyint" />
+          <Property Name="DataCreated_Date" Type="datetime" />
+          <Property Name="DataCreated_By" Type="bigint" />
+          <Property Name="DataChanged_Date" Type="datetime" />
+          <Property Name="DataChanged_By" Type="bigint" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="Remark" Type="varchar" MaxLength="100" />
+          <Property Name="DataCreated_Date" Type="datetime" />
+          <Property Name="DataCreated_By" Type="bigint" />
+          <Property Name="DataChanged_Date" Type="datetime" />
+          <Property Name="DataChanged_By" Type="bigint" />
+        </EntityType>
+        <EntityContainer Name="AsEasyModelStoreContainer">
+          <EntitySet Name="LoginUser" EntityType="Self.LoginUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OperLog" EntityType="Self.OperLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Question" EntityType="Self.Question" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AsEasyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="LoginUser" EntityType="AsEasyModel.LoginUser" />
+          <EntitySet Name="OperLog" EntityType="AsEasyModel.OperLog" />
+          <EntitySet Name="Role" EntityType="AsEasyModel.Role" />
+          <EntitySet Name="Question" EntityType="AsEasyModel.Question" />
+        </EntityContainer>
+        <EntityType Name="LoginUser">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoginName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DispalyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Byte" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DataCreated_Date" Type="DateTime" Precision="3" />
+          <Property Name="DataCreated_By" Type="Int64" />
+          <Property Name="DataChanged_Date" Type="DateTime" Precision="3" />
+          <Property Name="DataChanged_By" Type="Int64" />
+        </EntityType>
+        <EntityType Name="OperLog">
+          <Key>
+            <PropertyRef Name="LogID" />
+          </Key>
+          <Property Name="LogID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DataType" Type="Int32" />
+          <Property Name="OperType" Type="Byte" />
+          <Property Name="EntityID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Content" Type="Binary" MaxLength="8000" FixedLength="true" />
+          <Property Name="DataCreated_Date" Type="DateTime" Precision="3" />
+          <Property Name="DataCreated_By" Type="Int64" />
+          <Property Name="DataChanged_Date" Type="DateTime" Precision="3" />
+          <Property Name="DataChanged_By" Type="Int64" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Remark" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DataCreated_Date" Type="DateTime" Precision="3" />
+          <Property Name="DataCreated_By" Type="Int64" />
+          <Property Name="DataChanged_Date" Type="DateTime" Precision="3" />
+          <Property Name="DataChanged_By" Type="Int64" />
+        </EntityType>
+        <EntityType Name="Question">
+          <Key>
+            <PropertyRef Name="QuestionID" />
+          </Key>
+          <Property Name="QuestionID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Remark" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Byte" />
+          <Property Name="DataCreated_Date" Type="DateTime" Precision="3" />
+          <Property Name="DataCreated_By" Type="Int64" />
+          <Property Name="DataChanged_Date" Type="DateTime" Precision="3" />
+          <Property Name="DataChanged_By" Type="Int64" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AsEasyModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="LoginUser">
+            <EntityTypeMapping TypeName="AsEasyModel.LoginUser">
+              <MappingFragment StoreEntitySet="LoginUser">
+                <ScalarProperty Name="DataChanged_By" ColumnName="DataChanged_By" />
+                <ScalarProperty Name="DataChanged_Date" ColumnName="DataChanged_Date" />
+                <ScalarProperty Name="DataCreated_By" ColumnName="DataCreated_By" />
+                <ScalarProperty Name="DataCreated_Date" ColumnName="DataCreated_Date" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="DispalyName" ColumnName="DispalyName" />
+                <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OperLog">
+            <EntityTypeMapping TypeName="AsEasyModel.OperLog">
+              <MappingFragment StoreEntitySet="OperLog">
+                <ScalarProperty Name="DataChanged_By" ColumnName="DataChanged_By" />
+                <ScalarProperty Name="DataChanged_Date" ColumnName="DataChanged_Date" />
+                <ScalarProperty Name="DataCreated_By" ColumnName="DataCreated_By" />
+                <ScalarProperty Name="DataCreated_Date" ColumnName="DataCreated_Date" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="EntityID" ColumnName="EntityID" />
+                <ScalarProperty Name="OperType" ColumnName="OperType" />
+                <ScalarProperty Name="DataType" ColumnName="DataType" />
+                <ScalarProperty Name="LogID" ColumnName="LogID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="AsEasyModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="DataChanged_By" ColumnName="DataChanged_By" />
+                <ScalarProperty Name="DataChanged_Date" ColumnName="DataChanged_Date" />
+                <ScalarProperty Name="DataCreated_By" ColumnName="DataCreated_By" />
+                <ScalarProperty Name="DataCreated_Date" ColumnName="DataCreated_Date" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Question">
+            <EntityTypeMapping TypeName="AsEasyModel.Question">
+              <MappingFragment StoreEntitySet="Question">
+                <ScalarProperty Name="DataChanged_By" ColumnName="DataChanged_By" />
+                <ScalarProperty Name="DataChanged_Date" ColumnName="DataChanged_Date" />
+                <ScalarProperty Name="DataCreated_By" ColumnName="DataCreated_By" />
+                <ScalarProperty Name="DataCreated_Date" ColumnName="DataCreated_Date" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

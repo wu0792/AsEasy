@@ -1,0 +1,23 @@
+﻿<%@ Template Language="C#" TargetLanguage="Text" %>
+<%@ Property Name="Table" Type="TableSchema" DeepLoad="True" Optional="False" Category="Context" Description="" %>
+ 
+<%@ Assembly Name="SchemaExplorer" %>
+<%@ Assembly Name="System.Design" %>
+<%@ Import Namespace="SchemaExplorer" %>
+<%@ Import Namespace="System.Linq" %>
+ 
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using Dapper;
+using DataStore.Dal.Pager;
+using DataStore.Entity;
+using DataStore.Pager;
+
+namespace DataStore.Dal
+{
+    public partial interface I<%= Table.Name%>Service
+    {
+        
+    }
+}

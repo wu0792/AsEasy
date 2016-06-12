@@ -1,0 +1,144 @@
+﻿<%@ Template Language="C#" TargetLanguage="Text" %>
+<%@ Property Name="Table" Type="TableSchema" DeepLoad="True" Optional="False" Category="Context" Description="" %>
+ 
+<%@ Assembly Name="SchemaExplorer" %>
+<%@ Assembly Name="System.Design" %>
+<%@ Import Namespace="SchemaExplorer" %>
+<%@ Import Namespace="System.Linq" %>
+ 
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using Dapper;
+using DataStore.Dal.Pager;
+using DataStore.Entity;
+using DataStore.Pager;
+
+<% var lowerTableName = Table.Name[0].ToString().ToLower() + Table.Name.Substring(1); %>
+<% var pkColName = Table.Columns.First(t=>t.IsPrimaryKeyMember).Name; %>
+
+namespace DataStore.Dal
+{
+    public partial class <%= Table.Name%>Service : DalBase, I<%= Table.Name%>Service
+    {
+        public void Delete(List<long> idList)
+        {
+            using (var conn = GetConnection(false))
+            {
+                var args = new DynamicParameters();
+                var table = GetIdTableFromList(idList);
+                var cmd = new CommandDefinition("sp_<%= Table.Name%>_d#0", commandType: CommandType.StoredProcedure, parameters: args);
+
+                args.Add("@TVP_ID", dbType: DbType.Object, direction: ParameterDirection.Input, value: table);
+                conn.ExecuteReader(cmd);
+            }
+        }
+
+        public void Delete(long id)
+        {
+            Delete(new List<long>() { id });
+        }
+        
+        public void Insert(List<<%= Table.Name%>> <%= lowerTableName %>List)
+        {
+            using (var conn = GetConnection(false))
+            {
+                var args = new DynamicParameters();
+                var table = new DataTable();
+                <%foreach(ColumnSchema col in Table.Columns){%>
+                table.Columns.Add("<%= col.Name %>");
+                <%}%>
+      
+                foreach (var entry in <%= lowerTableName%>List)
+                {
+                    var row = table.NewRow();
+                    <%foreach(ColumnSchema col in Table.Columns){%>
+                    row["<%= col.Name %>"] = entry.<%= col.Name %>;
+                    <%}%>
+
+                    table.Rows.Add(row);
+                }
+
+                var cmd = new CommandDefinition("sp_<%= Table.Name%>_i#0", commandType: CommandType.StoredProcedure, parameters: args);
+
+                args.Add("@TVP_<%= Table.Name%>#0", dbType: DbType.Object, direction: ParameterDirection.Input, value: table);
+                conn.ExecuteReader(cmd);
+            }
+        }
+ 
+        public void Insert(<%= Table.Name%> <%= lowerTableName%>)
+        {
+            Insert(new List<<%= Table.Name%>>() { <%= lowerTableName%> });
+        }
+ 
+        public void Update(List<<%= Table.Name%>> <%= lowerTableName%>List)
+        {
+            using (var conn = GetConnection(false))
+            {
+                var args = new DynamicParameters();
+                var table = new DataTable();                
+                <%foreach(ColumnSchema col in Table.Columns){%>
+                table.Columns.Add("<%= col.Name %>");
+                <%}%>
+
+                foreach (var entry in <%= lowerTableName%>List)
+                {
+                    var row = table.NewRow();
+                    <%foreach(ColumnSchema col in Table.Columns){%>
+                    row["<%= col.Name %>"] = entry.<%= col.Name %>;
+                    <%}%>
+
+                    table.Rows.Add(row);
+                }
+
+                var cmd = new CommandDefinition("sp_<%= Table.Name%>_u#0", commandType: CommandType.StoredProcedure, parameters: args);
+
+                args.Add("@TVP_<%= Table.Name%>#0", dbType: DbType.Object, direction: ParameterDirection.Input, value: table);
+                conn.ExecuteReader(cmd);
+            }
+        }
+
+        public void Update(<%= Table.Name%> <%= lowerTableName%>)
+        {
+            Update(new List<<%= Table.Name%>>() { <%= lowerTableName%> });
+        }
+
+        public IEnumerable<<%= Table.Name%>> Get<%= Table.Name%>s()
+        {
+            return Get<%= Table.Name%>s("", null);
+        }
+
+        public IEnumerable<<%= Table.Name%>> Get<%= Table.Name%>s(string where, DynamicParameters parameters)
+        {
+            using (var conn = GetConnection(false))
+            {
+                return conn.Query<<%= Table.Name%>>("select * from <%= Table.Name%> where " + (string.IsNullOrWhiteSpace(where) ? "1=1" : where), parameters);
+            }
+        }
+        
+        public <%= Table.Name%> GetSingle<%= Table.Name%>(string where, DynamicParameters parameters)
+        {
+            var <%= lowerTableName%>s = Get<%= Table.Name%>s(where, parameters);
+            return <%= lowerTableName%>s != null && <%= lowerTableName%>s.Any() ? <%= lowerTableName%>s.First() : null;
+        }
+
+        public <%= Table.Name%> Get<%= Table.Name%>ByPk(long id)
+        {
+            return Get<%= Table.Name%>s(" <%= pkColName%> = @<%= pkColName%>", new DynamicParameters(new { <%= pkColName%> = id })).FirstOrDefault();
+        }
+
+        public PageDataView<<%= Table.Name%>> GetList(string name, int page, int pageSize = 10)
+        {
+            var criteria = new PageCriteria();
+            criteria.AppendCondition(" Name like '{0}%' ", name);
+
+            criteria.CurrentPage = page;
+            criteria.Fields = "*";
+            criteria.PageSize = pageSize;
+            criteria.TableName = "<%= Table.Name%>";
+            criteria.PrimaryKey = "<%= Table.Columns.First(t=>t.IsPrimaryKeyMember).Name%>";
+            var r = GetPageData<<%= Table.Name%>>(criteria);
+            return r;
+        }
+    }
+}

@@ -1,0 +1,29 @@
+﻿@model PageDataView<Role>
+@using AsEasy.Ext
+@using DataStore.Entity
+@using DataStore.Dal.Pager;
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title.</h1>
+                <h2>@ViewBag.Message</h2>
+            </hgroup>
+            <ul>
+                @foreach (var role in Model.Items)
+                {
+                    <li>id: @role.RoleID  name:@role.Name</li>
+                }
+            </ul>
+
+            <div class="pagination">
+                @Html.PageLinks(Model, p => @Url.Action("Index", new { pageIdx = p, pageSize = 5 }))
+            </div>
+        </div>
+    </section>
+}

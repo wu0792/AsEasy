@@ -1,0 +1,45 @@
+﻿<%@ Register Name="Service" Template="C:\Src\AsEasy\Template\dalService.cst" MergeProperties="False" ExcludeProperties="" %>
+<%@ Register Name="ManualService" Template="C:\Src\AsEasy\Template\dalManualService.cst" MergeProperties="False" ExcludeProperties="" %>
+<%@ Register Name="Interface" Template="C:\Src\AsEasy\Template\dalInterface.cst" MergeProperties="False" ExcludeProperties="" %>
+<%@ Register Name="ManualInterface" Template="C:\Src\AsEasy\Template\dalManualInterface.cst" MergeProperties="False" ExcludeProperties="" %>
+ 
+<%@ Template Language="C#" TargetLanguage="Text" %>
+<%@ Property Name="OutPutDest" Type="String" %>
+<%@ Property Name="DB" Type="SchemaExplorer.DatabaseSchema" DeepLoad="True" Optional="False" Category="Context" Description="" %>
+ 
+<%@ Assembly Name="SchemaExplorer" %>
+<%@ Assembly Name="System.Design" %>
+<%@ Import Namespace="SchemaExplorer" %>
+ 
+<% 
+CodeTemplate codeTemplate2=new Service();
+codeTemplate2.SetProperty("SourceDatabase",DB);
+
+CodeTemplate codeTemplate2Manual=new ManualService();
+codeTemplate2Manual.SetProperty("SourceDatabase",DB);
+
+CodeTemplate codeTemplate3=new Interface();
+codeTemplate3.SetProperty("SourceDatabase",DB);
+
+CodeTemplate codeTemplate3Manual=new ManualInterface();
+codeTemplate3Manual.SetProperty("SourceDatabase",DB);
+%>
+ 
+ 
+<%foreach(TableSchema tb in DB.Tables){
+    codeTemplate2.SetProperty("Table",tb);
+    codeTemplate2.RenderToFile(OutPutDest+@"\Dal\Service\"+@"\"+tb.Name+"Service.cs",true);
+    
+    codeTemplate3.SetProperty("Table",tb);
+    codeTemplate3.RenderToFile(OutPutDest+@"\Dal\IDao\"+@"\I"+tb.Name+"Service.cs",true);
+        
+    //Manual部分默认不会生成，否则会覆盖
+    /*
+    codeTemplate3Manual.SetProperty("Table",tb);
+    codeTemplate3Manual.RenderToFile(OutPutDest+@"\DalManual_Temp\IDao\"+@"\I"+tb.Name+"Service.cs",true);
+    
+    codeTemplate2Manual.SetProperty("Table",tb);
+    codeTemplate2Manual.RenderToFile(OutPutDest+@"\DalManual_Temp\Service\"+@"\"+tb.Name+"Service.cs",true);
+    */
+    
+} %>

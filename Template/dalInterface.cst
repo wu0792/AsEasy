@@ -1,0 +1,43 @@
+﻿<%@ Template Language="C#" TargetLanguage="Text" %>
+<%@ Property Name="Table" Type="TableSchema" DeepLoad="True" Optional="False" Category="Context" Description="" %>
+ 
+<%@ Assembly Name="SchemaExplorer" %>
+<%@ Assembly Name="System.Design" %>
+<%@ Import Namespace="SchemaExplorer" %>
+<%@ Import Namespace="System.Linq" %>
+ 
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using Dapper;
+using DataStore.Dal.Pager;
+using DataStore.Entity;
+using DataStore.Pager;
+
+namespace DataStore.Dal
+{
+    public partial interface I<%= Table.Name%>Service
+    {
+        void Delete(List<long> idList);
+
+        void Delete(long id);
+        
+        void Insert(List<<%= Table.Name%>> <%= Table.Name%>List);
+ 
+        void Insert(<%= Table.Name%> <%= Table.Name%>);
+ 
+        void Update(List<<%= Table.Name%>> <%= Table.Name%>List);
+
+        void Update(<%= Table.Name%> <%= Table.Name%>);
+
+        IEnumerable<<%= Table.Name%>> Get<%= Table.Name%>s();
+
+        IEnumerable<<%= Table.Name%>> Get<%= Table.Name%>s(string where, DynamicParameters parameters);
+        
+        <%= Table.Name%> GetSingle<%= Table.Name%>(string where, DynamicParameters parameters);
+
+        <%= Table.Name%> Get<%= Table.Name%>ByPk(long id);
+
+        PageDataView<<%= Table.Name%>> GetList(string name, int page, int pageSize = 10);
+    }
+}

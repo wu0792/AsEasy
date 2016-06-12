@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<codeSmith xmlns="http://www.codesmithtools.com/schema/csp.xsd">
+  <variables>
+    <add key="ConnectionString1" value="data source=WU0792-PC\WU0792;initial catalog=AsEasy;persist security info=True;user id=sa;password=w;" />
+  </variables>
+  <propertySets>
+    <propertySet name="dalGen.txt" output="dalGen.txt" template="C:\Src\AsEasy\Template\dalGen.cst">
+      <property name="OutPutDest">C:\Src\AsEasy\DataStore\Dal</property>
+      <property name="DB">
+        <connectionString>$(ConnectionString1)</connectionString>
+        <providerType>SchemaExplorer.SqlSchemaProvider,SchemaExplorer.SqlSchemaProvider</providerType>
+      </property>
+    </propertySet>
+  </propertySets>
+</codeSmith>
