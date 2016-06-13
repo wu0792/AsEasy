@@ -57,7 +57,11 @@ namespace AsEasy.Controllers
                     User = loginUser
                 };
 
-                return RedirectToAction("Index", "Home");
+                return Json(new MessageModel()
+                {
+                    IsSuccess = true,
+                    Url = Url.Action("Index", "Home")
+                });
             }
 
             var msg2 = new MessageModel()

@@ -1,15 +1,35 @@
 ﻿<head>
     <title>登录</title>
-    <script src="~/Scripts/require.js"></script>
-    <script src="~/Resource/js/Login.js"></script>
-    <script type="text/javascript">
-        $(function() {
-            var app = new Login();
-            app.Init();
-        });
-    </script>
+    <script data-main="../Scripts/Lib/Login.js" src="~/Scripts/require.js"></script>
+    <style>
+        html {
+            font-size: 12px;
+        }
+
+        li {
+            line-height: 28px;
+        }
+
+        span {
+            width: 200px;
+            display: inline-block;
+        }
+
+        label {
+            display: inline;
+        }
+
+        input.error {
+            border: solid 1px red;
+        }
+
+        label.error {
+            color: red;
+            margin-left: 5px;
+        }
+    </style>
 </head>
-<form action="@Url.Action("LoginSubmit", "Account")" method="POST">
+<form>
     <div>
         <span>用户名：</span>
         <input id="loginName" name="loginName" type="text" />
@@ -24,6 +44,6 @@
         <input id="checkCode" name="checkCode" type="text" />
     </div>
     <div>
-        <input id="submit" type="submit" value="登录" />
+        <input id="submit" type="button" value="登录" />
     </div>
 </form>
