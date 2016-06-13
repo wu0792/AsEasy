@@ -8,7 +8,13 @@
 
 require(['jquery', 'jqueryVal', 'jqueryValZh'], function ($) {
     $.extend($.validator.messages, {
-        required: "*"
+        required: "不能为空"
+    });
+
+    $.validator.setDefaults({
+        errorPlacement: function (error, element) {
+            $(element).attr('title', $(error).html());
+        }
     });
 
     var app = {
@@ -30,13 +36,11 @@ require(['jquery', 'jqueryVal', 'jqueryValZh'], function ($) {
             });
 
             $submit.click(function () {
+                $('input').removeAttr('title');
                 var validator = $('form').validate();
                 var isValid = validator.form();
 
-                if (!isValid) {
-                    alert("请填写完整再试");
-                }
-                else {
+                if (isValid) {
                     $.ajax({
                         type: "POST",
                         dataType: "JSON",

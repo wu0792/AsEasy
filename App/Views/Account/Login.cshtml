@@ -40,8 +40,8 @@
     </div>
     <div>
         <span>密码：</span>
-        <img src="@Url.Action("CreateCheckCode")" onclick="this.src = '@Url.Action("CreateCheckCode")'+'?f='+ Math.random()" title="单击切换图片" />
-        <input id="checkCode" name="checkCode" type="text" />
+        <img src="@Url.Action("CreateCheckCode")" onclick="this.src = '@Url.Action("CreateCheckCode")'+'?f='+ Math.random()" title="单击更换" />
+        <input id="checkCode" name="checkCode" type="text" value="1234" />
     </div>
     <div>
         <input id="submit" type="button" value="登录" />
