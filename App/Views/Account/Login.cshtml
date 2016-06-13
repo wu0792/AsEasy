@@ -1,4 +1,15 @@
-﻿<form action="@Url.Action("LoginSubmit", "Account")" method="POST">
+﻿<head>
+    <title>登录</title>
+    <script src="~/Scripts/require.js"></script>
+    <script src="~/Resource/js/Login.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            var app = new Login();
+            app.Init();
+        });
+    </script>
+</head>
+<form action="@Url.Action("LoginSubmit", "Account")" method="POST">
     <div>
         <span>用户名：</span>
         <input id="loginName" name="loginName" type="text" />
@@ -8,6 +19,11 @@
         <input id="pwd" name="pwd" type="password" />
     </div>
     <div>
-        <input type="submit" value="Go" />
+        <span>密码：</span>
+        <img src="@Url.Action("CreateCheckCode")" onclick="this.src = '@Url.Action("CreateCheckCode")'+'?f='+ Math.random()" title="单击切换图片" />
+        <input id="checkCode" name="checkCode" type="text" />
+    </div>
+    <div>
+        <input id="submit" type="submit" value="登录" />
     </div>
 </form>

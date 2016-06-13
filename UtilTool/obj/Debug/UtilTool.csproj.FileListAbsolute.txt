@@ -1,4 +1,0 @@
-C:\Src\AsEasy\UtilTool\bin\Debug\UtilTool.dll
-C:\Src\AsEasy\UtilTool\bin\Debug\UtilTool.pdb
-C:\Src\AsEasy\UtilTool\obj\Debug\UtilTool.dll
-C:\Src\AsEasy\UtilTool\obj\Debug\UtilTool.pdb

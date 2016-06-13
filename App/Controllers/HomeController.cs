@@ -13,6 +13,7 @@ namespace AsEasy.Controllers
 {
     public class HomeController : BaseController
     {
+        [AuthLogin]
         public ActionResult Index()
         {
             var roleService = new RoleService();

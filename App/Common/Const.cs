@@ -15,6 +15,7 @@ namespace AsEasy.Common
         public class SessionKey
         {
             public const string LoginUser = "LoginUser";
+            public const string LoginCheckCode = "LoginCheckCode";
         }
     }
 }
