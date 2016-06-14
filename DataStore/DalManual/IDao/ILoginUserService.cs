@@ -10,6 +10,6 @@ namespace DataStore.Dal
 {
     public partial interface ILoginUserService
     {
-        
+        PageDataView<LoginUser> GetList(string name, string status, int page, int pageSize = 10);
     }
 }

@@ -12,7 +12,7 @@ using UtilTool;
 
 namespace AsEasy.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         public ActionResult Login()
         {
@@ -118,6 +118,15 @@ namespace AsEasy.Controllers
                 Response.ContentType = "image/Gif";
                 Response.BinaryWrite(ms.ToArray());
             }
+        }
+
+        public ActionResult List()
+        {
+            var name = GetStringValueFromRequest("name");
+            var status = GetStringValueFromRequest("status");
+
+            var userList = DalFactory.LoginUserService.GetList(name, status, GetPageIndexFromQuery(), GetPageSizeFromQuery());
+            return View(userList);
         }
     }
 }

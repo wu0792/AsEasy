@@ -16,7 +16,7 @@ using DataStore.Pager;
 
 namespace DataStore.Dal
 {
-    public partial class <%= Table.Name%>Service
+    public partial class <%= Table.Name%>Service: I<%= Table.Name%>Service
     {
        
     }

@@ -17,11 +17,10 @@ namespace AsEasy.Controllers
         public ActionResult Index()
         {
             var roleService = new RoleService();
-            var name = GetStringValueFromRequest("name", string.Empty);
             var pageIndex = GetPageIndexFromQuery();
             var pageSize = GetPageSizeFromQuery();
 
-            var roles = roleService.GetList(name, pageIndex, pageSize);
+            var roles = roleService.GetList(pageIndex, pageSize);
             return View(roles);
         }
 

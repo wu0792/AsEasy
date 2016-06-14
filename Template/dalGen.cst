@@ -37,9 +37,10 @@ codeTemplate3Manual.SetProperty("SourceDatabase",DB);
     /*
     codeTemplate3Manual.SetProperty("Table",tb);
     codeTemplate3Manual.RenderToFile(OutPutDest+@"\DalManual_Temp\IDao\"+@"\I"+tb.Name+"Service.cs",true);
+    */
     
     codeTemplate2Manual.SetProperty("Table",tb);
     codeTemplate2Manual.RenderToFile(OutPutDest+@"\DalManual_Temp\Service\"+@"\"+tb.Name+"Service.cs",true);
-    */
+    
     
 } %>

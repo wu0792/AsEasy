@@ -141,10 +141,9 @@ namespace DataStore.Dal
             return GetOperLogs(" LogID = @LogID", new DynamicParameters(new { LogID = id })).FirstOrDefault();
         }
 
-        public PageDataView<OperLog> GetList(string name, int page, int pageSize = 10)
+        public PageDataView<OperLog> GetList(int page, int pageSize = 10)
         {
             var criteria = new PageCriteria();
-            criteria.AppendCondition(" Name like '{0}%' ", name);
 
             criteria.CurrentPage = page;
             criteria.Fields = "*";

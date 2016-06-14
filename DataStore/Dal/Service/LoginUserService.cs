@@ -141,10 +141,9 @@ namespace DataStore.Dal
             return GetLoginUsers(" UserID = @UserID", new DynamicParameters(new { UserID = id })).FirstOrDefault();
         }
 
-        public PageDataView<LoginUser> GetList(string name, int page, int pageSize = 10)
+        public PageDataView<LoginUser> GetList(int page, int pageSize = 10)
         {
             var criteria = new PageCriteria();
-            criteria.AppendCondition(" Name like '{0}%' ", name);
 
             criteria.CurrentPage = page;
             criteria.Fields = "*";

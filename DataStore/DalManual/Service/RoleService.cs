@@ -8,7 +8,7 @@ using DataStore.Pager;
 
 namespace DataStore.Dal
 {
-    public partial class RoleService
+    public partial class RoleService: IRoleService
     {
        
     }

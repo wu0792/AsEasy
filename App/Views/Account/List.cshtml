@@ -1,0 +1,27 @@
+﻿@using AsEasy.Ext
+@using DataStore.Entity;
+@model DataStore.Dal.Pager.PageDataView<LoginUser>
+
+
+    <ul>
+        <li>
+            <span>登录名：</span>
+            <input id="name" name="name" />
+        </li>
+        <li>
+            <span>状态：</span>
+            <input id="status" name="status" />
+        </li>
+        @Url.Action()
+    </ul>
+
+    <ul>
+        @foreach (var user in Model.Items)
+        {
+            <li>
+                @user.LoginName
+            </li>
+        }
+    </ul>
+
+    @Html.PageLinks(Model, p => @Url.Action("List", new { pageIdx = p, pageSize = 5 }))

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿ 
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using Dapper;
@@ -14,13 +15,13 @@ namespace DataStore.Dal
 
         void Delete(long id);
         
-        void Insert(List<LoginUser> LoginUserList);
+        void Insert(List<LoginUser> loginUserList);
  
-        void Insert(LoginUser LoginUser);
+        void Insert(LoginUser loginUser);
  
-        void Update(List<LoginUser> LoginUserList);
+        void Update(List<LoginUser> loginUserList);
 
-        void Update(LoginUser LoginUser);
+        void Update(LoginUser loginUser);
 
         IEnumerable<LoginUser> GetLoginUsers();
 
@@ -30,6 +31,6 @@ namespace DataStore.Dal
 
         LoginUser GetLoginUserByPk(long id);
 
-        PageDataView<LoginUser> GetList(string name, int page, int pageSize = 10);
+        PageDataView<LoginUser> GetList(int page, int pageSize = 10);
     }
 }

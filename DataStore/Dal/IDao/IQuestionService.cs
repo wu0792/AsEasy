@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿ 
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using Dapper;
@@ -14,13 +15,13 @@ namespace DataStore.Dal
 
         void Delete(long id);
         
-        void Insert(List<Question> QuestionList);
+        void Insert(List<Question> questionList);
  
-        void Insert(Question Question);
+        void Insert(Question question);
  
-        void Update(List<Question> QuestionList);
+        void Update(List<Question> questionList);
 
-        void Update(Question Question);
+        void Update(Question question);
 
         IEnumerable<Question> GetQuestions();
 
@@ -30,6 +31,6 @@ namespace DataStore.Dal
 
         Question GetQuestionByPk(long id);
 
-        PageDataView<Question> GetList(string name, int page, int pageSize = 10);
+        PageDataView<Question> GetList(int page, int pageSize = 10);
     }
 }

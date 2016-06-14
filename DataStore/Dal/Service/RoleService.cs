@@ -133,10 +133,9 @@ namespace DataStore.Dal
             return GetRoles(" RoleID = @RoleID", new DynamicParameters(new { RoleID = id })).FirstOrDefault();
         }
 
-        public PageDataView<Role> GetList(string name, int page, int pageSize = 10)
+        public PageDataView<Role> GetList(int page, int pageSize = 10)
         {
             var criteria = new PageCriteria();
-            criteria.AppendCondition(" Name like '{0}%' ", name);
 
             criteria.CurrentPage = page;
             criteria.Fields = "*";

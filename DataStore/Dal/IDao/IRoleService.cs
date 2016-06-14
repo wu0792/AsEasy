@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿ 
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using Dapper;
@@ -14,13 +15,13 @@ namespace DataStore.Dal
 
         void Delete(long id);
         
-        void Insert(List<Role> RoleList);
+        void Insert(List<Role> roleList);
  
-        void Insert(Role Role);
+        void Insert(Role role);
  
-        void Update(List<Role> RoleList);
+        void Update(List<Role> roleList);
 
-        void Update(Role Role);
+        void Update(Role role);
 
         IEnumerable<Role> GetRoles();
 
@@ -30,6 +31,6 @@ namespace DataStore.Dal
 
         Role GetRoleByPk(long id);
 
-        PageDataView<Role> GetList(string name, int page, int pageSize = 10);
+        PageDataView<Role> GetList(int page, int pageSize = 10);
     }
 }

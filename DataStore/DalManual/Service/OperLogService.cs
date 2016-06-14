@@ -8,7 +8,7 @@ using DataStore.Pager;
 
 namespace DataStore.Dal
 {
-    public partial class OperLogService
+    public partial class OperLogService: IOperLogService
     {
        
     }

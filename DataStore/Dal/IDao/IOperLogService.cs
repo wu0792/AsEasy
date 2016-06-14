@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿ 
+using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using Dapper;
@@ -14,13 +15,13 @@ namespace DataStore.Dal
 
         void Delete(long id);
         
-        void Insert(List<OperLog> OperLogList);
+        void Insert(List<OperLog> operLogList);
  
-        void Insert(OperLog OperLog);
+        void Insert(OperLog operLog);
  
-        void Update(List<OperLog> OperLogList);
+        void Update(List<OperLog> operLogList);
 
-        void Update(OperLog OperLog);
+        void Update(OperLog operLog);
 
         IEnumerable<OperLog> GetOperLogs();
 
@@ -30,6 +31,6 @@ namespace DataStore.Dal
 
         OperLog GetOperLogByPk(long id);
 
-        PageDataView<OperLog> GetList(string name, int page, int pageSize = 10);
+        PageDataView<OperLog> GetList(int page, int pageSize = 10);
     }
 }

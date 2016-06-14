@@ -5,6 +5,8 @@
 <%@ Assembly Name="System.Design" %>
 <%@ Import Namespace="SchemaExplorer" %>
 <%@ Import Namespace="System.Linq" %>
+
+<% var lowerTableName = Table.Name[0].ToString().ToLower() + Table.Name.Substring(1); %>
  
 using System.Collections.Generic;
 using System.Data;
@@ -22,13 +24,13 @@ namespace DataStore.Dal
 
         void Delete(long id);
         
-        void Insert(List<<%= Table.Name%>> <%= Table.Name%>List);
+        void Insert(List<<%= Table.Name%>> <%= lowerTableName%>List);
  
-        void Insert(<%= Table.Name%> <%= Table.Name%>);
+        void Insert(<%= Table.Name%> <%= lowerTableName%>);
  
-        void Update(List<<%= Table.Name%>> <%= Table.Name%>List);
+        void Update(List<<%= Table.Name%>> <%= lowerTableName%>List);
 
-        void Update(<%= Table.Name%> <%= Table.Name%>);
+        void Update(<%= Table.Name%> <%= lowerTableName%>);
 
         IEnumerable<<%= Table.Name%>> Get<%= Table.Name%>s();
 
@@ -38,6 +40,6 @@ namespace DataStore.Dal
 
         <%= Table.Name%> Get<%= Table.Name%>ByPk(long id);
 
-        PageDataView<<%= Table.Name%>> GetList(string name, int page, int pageSize = 10);
+        PageDataView<<%= Table.Name%>> GetList(int page, int pageSize = 10);
     }
 }

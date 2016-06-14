@@ -127,10 +127,9 @@ namespace DataStore.Dal
             return Get<%= Table.Name%>s(" <%= pkColName%> = @<%= pkColName%>", new DynamicParameters(new { <%= pkColName%> = id })).FirstOrDefault();
         }
 
-        public PageDataView<<%= Table.Name%>> GetList(string name, int page, int pageSize = 10)
+        public PageDataView<<%= Table.Name%>> GetList(int page, int pageSize = 10)
         {
             var criteria = new PageCriteria();
-            criteria.AppendCondition(" Name like '{0}%' ", name);
 
             criteria.CurrentPage = page;
             criteria.Fields = "*";

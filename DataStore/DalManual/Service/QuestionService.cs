@@ -8,7 +8,7 @@ using DataStore.Pager;
 
 namespace DataStore.Dal
 {
-    public partial class QuestionService
+    public partial class QuestionService: IQuestionService
     {
        
     }

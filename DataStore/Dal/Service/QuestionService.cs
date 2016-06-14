@@ -137,10 +137,9 @@ namespace DataStore.Dal
             return GetQuestions(" QuestionID = @QuestionID", new DynamicParameters(new { QuestionID = id })).FirstOrDefault();
         }
 
-        public PageDataView<Question> GetList(string name, int page, int pageSize = 10)
+        public PageDataView<Question> GetList(int page, int pageSize = 10)
         {
             var criteria = new PageCriteria();
-            criteria.AppendCondition(" Name like '{0}%' ", name);
 
             criteria.CurrentPage = page;
             criteria.Fields = "*";
