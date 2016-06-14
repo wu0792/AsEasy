@@ -43,6 +43,11 @@ namespace DataStore.Pager
             var clearValue = ExcludeSensitiveChar(value);
             if (!string.IsNullOrWhiteSpace(clearValue) || !onlyAppendIfNotEmpty)
             {
+                if (string.IsNullOrWhiteSpace(_condition))
+                {
+                    _condition = " 1=1 ";
+                }
+
                 _condition += string.Format(format, clearValue);
             }
         }

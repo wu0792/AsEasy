@@ -1,8 +1,14 @@
-﻿@using AsEasy.Ext
+﻿@model PageDataView<LoginUser>
+@using AsEasy.Ext;
 @using DataStore.Entity;
-@model DataStore.Dal.Pager.PageDataView<LoginUser>
+@using DataStore.Dal.Pager;
 
-
+<head>
+    <title></title>
+    <script data-main="../Scripts/Lib/Account.List.js" src="~/Scripts/require.js"></script>
+    <link href="~/Content/Basic.css" rel="stylesheet" />
+</head>
+<form>
     <ul>
         <li>
             <span>登录名：</span>
@@ -12,8 +18,8 @@
             <span>状态：</span>
             <input id="status" name="status" />
         </li>
-        @Url.Action()
     </ul>
+    <input type="submit" id="btnSearch" value="查询" />
 
     <ul>
         @foreach (var user in Model.Items)
@@ -25,3 +31,4 @@
     </ul>
 
     @Html.PageLinks(Model, p => @Url.Action("List", new { pageIdx = p, pageSize = 5 }))
+</form>

@@ -13,7 +13,7 @@ namespace DataStore.Dal
         public PageDataView<LoginUser> GetList(string name, string status, int page, int pageSize = 10)
         {
             var criteria = new PageCriteria();
-            criteria.AppendCondition(" and Name like '%{0}%'", name);
+            criteria.AppendCondition(" and LoginName like '%{0}%'", name);
             criteria.AppendCondition(" and Status = {0}", status);
 
             criteria.CurrentPage = page;

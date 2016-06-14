@@ -7,6 +7,8 @@ using System.Web.Mvc;
 using AsEasy.Common;
 using Dapper;
 using DataStore.Dal;
+using DataStore.Dal.Pager;
+using DataStore.Entity;
 using Newtonsoft.Json.Converters;
 using UtilTool;
 
@@ -122,11 +124,18 @@ namespace AsEasy.Controllers
 
         public ActionResult List()
         {
+            var userList = GetUserList();
+            var getMethod = Request.HttpMethod == "GET";
+            return View(userList);
+        }
+
+        private PageDataView<LoginUser> GetUserList()
+        {
             var name = GetStringValueFromRequest("name");
             var status = GetStringValueFromRequest("status");
 
             var userList = DalFactory.LoginUserService.GetList(name, status, GetPageIndexFromQuery(), GetPageSizeFromQuery());
-            return View(userList);
+            return userList;
         }
     }
 }
