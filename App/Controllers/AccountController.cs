@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Web;
+using System.Web.ModelBinding;
 using System.Web.Mvc;
 using AsEasy.Common;
 using Dapper;
@@ -18,17 +19,6 @@ namespace AsEasy.Controllers
     {
         public ActionResult Login()
         {
-            string username = "";
-            string password = "";
-            if (username == "admin" && password == "admin")
-            {
-                Session["AdminUser"] = username;
-                return RedirectToAction("Index", "Home", new { area = "" });
-            }
-            else
-            {
-                ViewBag.Error = "用户名或密码不正确！";
-            }
             return View();
         }
 
@@ -136,6 +126,11 @@ namespace AsEasy.Controllers
 
             var userList = DalFactory.LoginUserService.GetList(name, status, GetPageIndexFromQuery(), GetPageSizeFromQuery());
             return userList;
+        }
+
+        public ActionResult Add([Form] LoginUser loginUser)
+        {
+            return View(loginUser);
         }
     }
 }

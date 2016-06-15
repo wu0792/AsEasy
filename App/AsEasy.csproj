@@ -260,6 +260,7 @@
     <Content Include="Views\Account\Logout.cshtml" />
     <Content Include="Views\Account\List.cshtml" />
     <Content Include="Scripts\Lib\Account.List.js" />
+    <Content Include="Views\Account\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,24 @@
+﻿@model DataStore.Entity.LoginUser
+
+@using (@Html.BeginForm())
+{
+    <ul>
+        <li>
+            <span>登录名：</span>
+            @Html.TextBox("LoginName")
+        </li>
+        <li>
+            <span>用户名：</span>
+            @Html.TextBox("DispalyName")
+        </li>
+        <li>
+            <span>密码：</span>
+            @Html.Password("Password")
+        </li>
+        <li>
+            <span>是否启用：</span>
+            @Html.EditorFor(t => t.Status)
+        </li>
+    </ul>
+    <input type="submit" id="btnSubmit" value="提交" />
+}
